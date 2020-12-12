@@ -1,0 +1,44 @@
+/*
+	Script elaborado para SQL-SERVER, Porém o JPA vai criar as tabelas e relacionamentos automaticamente nesse serviço!
+*/
+
+
+/*
+01 - TABELA PET
+*/
+
+IF EXISTS( SELECT * FROM sysobjects WHERE id = object_id( 'PET' ) )
+   DROP TABLE <OwnerCot>.PET
+go
+
+CREATE TABLE <OwnerCot>.PET (
+	ID       	   		   INT NOT NULL,
+    DT_CADASTRO			   DATETIME NOT NULL,
+	DT_NASCIMENTO		   DATETIME NOT NULL,
+	ESPECIE				   VARCHAR(80) NULL,
+	NICK				   VARCHAR(80) NULL,
+	RACA				   VARCHAR(80)
+)
+go
+ALTER TABLE <OwnerCot>.PET ADD CONSTRAINT ID PRIMARY KEY ( ID )
+go
+
+/*
+02 - TABELA CLIENTE
+*/
+
+IF EXISTS( SELECT * FROM sysobjects WHERE id = object_id( 'CLIENTE' ) )
+   DROP TABLE <OwnerCot>.CLIENTE
+go
+
+CREATE TABLE <OwnerCot>.CLIENTE (
+    ID 					INT NOT NULL,
+	CEP					VARCHAR(10) NULL,
+	CPF					VARCHAR(14) NULL,
+	DT_NASCIMENTO		DATETIME NOT NULL,
+	EMAIL				VARCHAR(30) NULL,
+	NOME				VARCHAR(90) NOT NULL
+)
+go
+ALTER TABLE <OwnerCot>.CLIENTE ADD CONSTRAINT ID PRIMARY KEY ( ID )
+go
